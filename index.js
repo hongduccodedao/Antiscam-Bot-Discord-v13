@@ -7,6 +7,10 @@ const client = new Client({
 });
 
 client.once('ready', () => {
+    client.user.setActivity('Bởi PinkDuwc._#0510', {
+        type: 'STREAMING',
+        url: 'https://www.twitch.tv/hongduccodedao',
+    });
     console.log(`${client.user.tag} đã sẵn sàng!`);
 });
 
@@ -27,21 +31,24 @@ client.on('messageCreate', async message => {
             .addField(`Thời gian:`, `<t:${parseInt(message.createdAt /1000)}:F>`, true)
             .addField(`Nội dung tin nhắn:`, `\`\`\`diff\n${message.content}\`\`\``, false)
             .setColor('#ff0000')
+            .setFooter({name: `Code by PinkDuwc._#510`})
         message.author.send({ embeds: [embedUser] });
 
         const member = message.guild.members.cache.get(message.author.id);
-        // console.log(member)
+        //Ban member sent scam link
         member.ban({ reason: 'Gửi link scam' });
         const embed = new MessageEmbed()
             .setTitle("Cảnh báo link scam") 
             .setColor("#ff0000")
             .setDescription(`Hình như bạn ${message.author} đã gửi link scam với nội dung: 
             \`\`\`diff\n${message.content}\`\`\``)
+            .setFooter({name: `Code by PinkDuwc._#510`})
             
         message.channel.send({ embeds: [embed] }).then(m => { setTimeout(() => { m.delete() }, 10000) })
     }
 });
 
+//anticrash
 process.on("unhandledRejection", (reason, p) => {
     console.log(reason, p)
 })
