@@ -3,7 +3,6 @@
     "axios": "^0.25.0",
     "discord.js": "^13.6.0",
     "y": "^0.3.2",
-    "ytdl-core": "^4.10.1"
   },
   "name": "antiscam_bot_discordjs_v13",
   "version": "1.0.0",
